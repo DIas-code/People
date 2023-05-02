@@ -1,0 +1,85 @@
+{% load_static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static '/vendor/css/css/style.css'%}">
+</head>
+<body>
+<div class="main">
+    <div class="head2" style="">
+        <header class="flex justify-between">
+            <div class="flex">
+                <a>
+                    <img src="{% static '/vendor/css/images/h1.png' %}" class="img_h1">
+                </a>
+            </div>
+            <div class="items-center" style="width: 30%">
+                <ul>
+                    li><a href="{% url 'main:index' %}" class="h_links ml4_percent"><b>Главная</b></a></li>
+                    <li><a href="{% url 'main:areas' %}" class="h_links ml4_percent">Области</a></li>
+                    <li><a href="{% url 'main:guides' %}" class="h_links ml4_percent">Гиды</a></li>
+                    <li><a href="{% url 'main:index' %}" class="h_links ml4_percent">Контакты</a></li>
+                </ul>
+            </div>
+        </header>
+        <div class="max_width mrl_auto text_center">
+            <div>
+                <h1 style="font-size: 64pt;margin-bottom: 25px">{% main: areas area.name%}</h1>
+            </div>
+        </div>
+    </div>
+    <div class="max_width mrl_auto text_center mt50px content_col">
+        <p>Самые популярные места!</p>
+        <div class="items-center">
+            <div class="con_font_size_part mrl_auto" style="width: 30%">
+                <div><img src="images/areas_places.jpg" width="100%"></div>
+                <p>Most liked place</p>
+            </div>
+        </div>
+        <div class="flex-column items-center">
+            <hr size="4" width="100%" color="seagreen" class="mb0px">
+            <div class=""><p style="font-size: 34pt; margin: 0">Выберите категорию</p></div>
+            <hr size="4" width="100%" color="seagreen" class="mt0px">
+        </div>
+        <div class="flex justify-between">
+            <div class="flex flex-column cat_list">
+                <h3 class="my-4">Sayahat</h3>
+                <div class="flex flex-column">
+                    <a href="#" class="list-group-item">Отели</a>
+                    <a href="#" class="list-group-item">Экскурсии</a>
+                    <a href="#" class="list-group-item">Мероприятия</a>
+                </div>
+            </div>
+            <div class="flex max_width75 justify-between">
+                <div class="col-lg-4 mb15rem">
+                    <div class="card h-100">
+                        <a href="#">
+                            <img class="card-img-top"
+                                 src="{{ product.image }}"
+                                 alt="">
+                        </a>
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                <a href="#">{{ product.name }}</a>
+                            </h4>
+                            <h5>{{ product.price }}</h5>
+                            <p class="card-text">{{ product.description }}</p>
+                        </div>
+                        <div class="card-footer text-center">
+                            <a class="btn btn-outline-success" href="{% url 'productStore:basket_add' product.id %}">Отправить в корзину</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div style="margin-top: 30px">
+            <p>По вопросам можете позвонить или написать нам: 8777-777-7777, [sayahat.kz@gmail.com]</p>
+        </div>
+    </footer>
+</div>
+</body>
+</html>

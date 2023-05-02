@@ -33,6 +33,7 @@ class Category(models.Model):
 
 class Events(models.Model):
     name = models.CharField(max_length=120)
+    image = models.ImageField(upload_to='events_image')
     date = models.DateTimeField()
     description = models.TextField(null=True)
     Place = models.ForeignKey(to=Place, on_delete=models.CASCADE)
@@ -47,6 +48,7 @@ class Events(models.Model):
 
 class Excursion(models.Model):
     name = models.CharField(max_length=120)
+    image = models.ImageField(upload_to='excursion_image')
     num_of_people_now = models.PositiveIntegerField(default=0)
     max_num_of_people = models.PositiveIntegerField()
     date = models.DateTimeField()
@@ -74,6 +76,7 @@ class Guide(models.Model):
 
 class Hotels(models.Model):
     name = models.CharField(max_length=120)
+    image = models.ImageField(upload_to='hotels_image')
     price = models.DecimalField(default=0, decimal_places=2, max_digits=8, validators=[MinValueValidator(Decimal('0.01'))])
     phone = models.CharField(max_length=12)
     description = models.TextField()

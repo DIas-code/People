@@ -16,3 +16,15 @@ def areas(request):
 
 def guides(request):
     return render(request, 'main/guides.html',{})
+
+def CategoryListView(request):
+    return render(request, 'main/area_products.html',{})
+
+def HotelsView(request):
+    ...
+
+def EventsView(request):
+    ...
+
+def ExcursionView(request):
+    ...
