@@ -3,8 +3,6 @@ from django.views.generic.base import TemplateView
 # Create your views here.
 from django.contrib.auth.decorators import login_required
 
-# def main(request):
-#     return render(request,'main/main.html',{})
 class IndexView(TemplateView):
     template_name = 'main/main.html'
 
@@ -13,4 +11,8 @@ class IndexView(TemplateView):
         context['title'] = 'Sayahat'
         return context
 
-# def areas_
+def areas(request):
+    return render(request, 'main/areas.html',{})
+
+def guides(request):
+    return render(request, 'main/guides.html',{})

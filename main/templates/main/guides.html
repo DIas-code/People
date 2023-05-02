@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{% static '/vendor/css/css/style.css'%}">
 </head>
 <body>
 <div class="main">
@@ -12,15 +12,15 @@
         <header class="flex justify-between">
             <div class="flex">
                 <a>
-                    <img src="images/h1.png" class="img_h1">
+                    <img src="{% static '/vendor/css/images/h1.png' %}" class="img_h1">
                 </a>
             </div>
             <div class="items-center" style="width: 30%">
                 <ul>
-                    <li><a href="main.html" class="h_links ml4_percent">Главная</a></li>
-                    <li><a href="areas.html" class="h_links ml4_percent"><b>Продукты</b></a></li>
-                    <li><a href="guides.html" class="h_links ml4_percent">Гиды</a></li>
-                    <li><a href="main.html" class="h_links ml4_percent">Контакты</a></li>
+                    <li><a href="{% url 'main:index' %}" class="h_links ml4_percent"><b>Главная</b></a></li>
+                    <li><a href="{% url 'main:areas' %}" class="h_links ml4_percent">Области</a></li>
+                    <li><a href="{% url 'main:guides' %}" class="h_links ml4_percent">Гиды</a></li>
+                    <li><a href="{% url 'main:index' %}" class="h_links ml4_percent">Контакты</a></li>
                 </ul>
             </div>
         </header>
@@ -42,7 +42,7 @@
             <div class="profile">
                 <div style="margin-bottom: 100px;">
                     <div class = "flex">
-                        <div><img src = "images/guide.png"></div>
+                        <div><img src = "{% static '/vendor/css/images/guide.png' %}"></div>
                         <div class="image_text">
                             Общая характеристика, достижения и т.д <br/>
                             <p class="description">Оценка: 4.7</p>
@@ -57,7 +57,7 @@
             <div class="profile">
                 <div style="margin-bottom: 100px;">
                     <div class = "flex">
-                        <div><img src = "images/guide.png"></div>
+                        <div><img src = "{% static '/vendor/css/images/guide.png' %}"></div>
                         <div class="image_text">
                             Общая характеристика, достижения и т.д <br/>
                             <p class="description">Оценка: 4.7</p>
@@ -72,7 +72,7 @@
             <div class="profile">
                 <div style="margin-bottom: 100px;">
                     <div class = "flex">
-                        <div><img src = "images/guide.png"></div>
+                        <div><img src = "{% static '/vendor/css/images/guide.png' %}"></div>
                         <div class="image_text">
                             Общая характеристика, достижения и т.д <br/>
                             <p class="description">Оценка: 4.7</p>
@@ -87,7 +87,7 @@
             <div class="profile">
                 <div style="margin-bottom: 100px;">
                     <div class = "flex">
-                        <div><img src = "images/guide.png"></div>
+                        <div><img src = "{% static '/vendor/css/images/guide.png' %}"></div>
                         <div class="image_text">
                             Общая характеристика, достижения и т.д <br/>
                             <p class="description">Оценка: 4.7</p>
