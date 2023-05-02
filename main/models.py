@@ -4,7 +4,7 @@ from django.core.validators import MinValueValidator
 # Create your models here.
 class Area(models.Model):
     location = models.CharField(max_length=120, unique=True)
-    description = models.TextField(null=True)
+    description = models.TextField()
 
     class Meta:
         verbose_name = 'Area'
@@ -14,20 +14,22 @@ class Area(models.Model):
         return self.location
 
 class Place(models.Model):
-    name = models.CharField(max_length=120)
+    name = models.CharField(max_length=120, unique=True)
     Area = models.ForeignKey(to=Area, on_delete=models.CASCADE)
-    description = models.TextField(null=True)
+    description = models.TextField()
+
     def __str__(self):
         return self.name
+
 class Category(models.Model):
-    name = models.CharField(max_length=64)
+    name = models.CharField(max_length=64, unique=True)
 
     class Meta:
         verbose_name = 'Category'
         verbose_name_plural = 'Categories'
 
     def __str__(self):
-        return f'{Category.name}'
+        return f'{self.name}'
 
 class Events(models.Model):
     name = models.CharField(max_length=120)
@@ -74,7 +76,7 @@ class Hotels(models.Model):
     name = models.CharField(max_length=120)
     price = models.DecimalField(default=0, decimal_places=2, max_digits=8, validators=[MinValueValidator(Decimal('0.01'))])
     phone = models.CharField(max_length=12)
-    description = models.TextField(null=True)
+    description = models.TextField()
     Category = models.ForeignKey(to=Category, on_delete=models.CASCADE)
     Place = models.ForeignKey(to=Place, on_delete=models.CASCADE)
 
