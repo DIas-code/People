@@ -4,7 +4,8 @@ from django.core.validators import MinValueValidator
 # Create your models here.
 class Area(models.Model):
     location = models.CharField(max_length=120, unique=True)
-    description = models.TextField()
+    image = models.ImageField(upload_to='areas_image')
+    # description = models.TextField()
 
     class Meta:
         verbose_name = 'Area'

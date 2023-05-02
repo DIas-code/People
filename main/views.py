@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.views.generic.base import TemplateView
+from django.views.generic.list import ListView
+from .models import Area
 # Create your views here.
 from django.contrib.auth.decorators import login_required
 
@@ -12,7 +14,11 @@ class IndexView(TemplateView):
         return context
 
 def areas(request):
-    return render(request, 'main/areas.html',{})
+    context = {
+            'title': 'sayahat',
+            'areas': Area.objects.all(),
+        }
+    return render(request, 'main/areas.html', context)
 
 def guides(request):
     return render(request, 'main/guides.html',{})

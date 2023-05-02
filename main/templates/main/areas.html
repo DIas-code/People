@@ -54,27 +54,14 @@
                 <img src="{% static '/vendor/css/images/Atyrau.jpg' %}" width="40%">
                 <p class="mt0px">Атырау</p>
             </div>
+
             <div class="flex justify-between">
+                {% for area in areas %}
                 <div class="con_font_size_part border_areas prl2px" style="width: 17%">
-                    <div><img src="{% static '/vendor/css/images/almaty.jpg' %}" width="100%"></div>
-                    <p>Алматы</p>
+                    <div><img src="{{ area.image.url }}" width="100%"></div>
+                    <p>{{ area.location }}</p>
                 </div>
-                <div class="con_font_size_part border_areas prl2px" style="width: 17%">
-                    <div><img src="{% static '/vendor/css/images/Aqmola.jpg' %}" width="100%"></div>
-                    <p>Акмола</p>
-                </div>
-                <div class="con_font_size_part border_areas prl2px" style="width: 17%">
-                    <div><img src="{% static '/vendor/css/images/Abai.jpg' %}" width="100%"></div>
-                    <p>Абай</p>
-                </div>
-                <div class="con_font_size_part border_areas prl2px" style="width: 17%">
-                    <div><img src="{% static '/vendor/css/images/Mangystau.jpg' %}" width="100%"></div>
-                    <p>Мангыстау</p>
-                </div>
-                <div class="con_font_size_part border_areas prl2px" style="width: 17%">
-                    <div><img src="{% static '/vendor/css/images/zhambyl.jpg' %}" width="100%"></div>
-                    <p>Жамбыл</p>
-                </div>
+                {% endfor %}
             </div>
             <div style="font-size: 18pt;">
                 <p>Для получения более подробной информации об этой области Вы можете перейти на соответствующую карточку с областью.</p>

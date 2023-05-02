@@ -10,5 +10,5 @@ urlpatterns = [
     # path('main', views.main, name='main'),
     path('areas', views.areas, name='areas'),
     path('guides', views.guides, name='guides'),
-    path('areas/area_products', views.CategoryListView, name='areas'),
+    path('areas/area_products', views.CategoryListView, name='areas_products'),
 ]
