@@ -28,7 +28,7 @@ def register(request):
         form = UserRegistrationForm(data=request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect(reverse('main:main'))
+            return HttpResponseRedirect(reverse('users:login'))
     else:
         form = UserRegistrationForm()
     context = {'form': form}
@@ -36,4 +36,4 @@ def register(request):
 
 def logout(request):
     auth.logout(request)
-    return HttpResponseRedirect(reverse('productStore:products'))
+    return HttpResponseRedirect(reverse('main:main'))
