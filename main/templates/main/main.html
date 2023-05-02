@@ -21,15 +21,25 @@
                         <li><a href="areas.html" class="h_links ml4_percent">Области</a></li>
                         <li><a href="guides.html" class="h_links ml4_percent">Гиды</a></li>
                         <li><a href="main.html" class="h_links ml4_percent">Контакты</a></li>
+                        <li>
+                        {% if user.is_authenticated %}
+                        <!-- <p>Welcome, {{ user.username }}!</p> -->
+                        <li><a href="{% url 'users:login' %}" class="h_links ml4_percent">Выйти</a></li>
+                        {% endif %}
+                        </li>
                     </ul>
                 </div>
             </header>
             <div class="max_width mrl_auto text_center">
                 <div>
                     <h1 style="font-size: 64pt;margin-bottom: 25px">Sayahat</h1>
-                    <h2 style="font-size: 25pt;font-weight: 400;line-height: 1.1;">Kazakhstandi birge janadan ashayiq!</h2>
-                    <a href="#"><button class="btn">Вход</button></a><br>
-                    <p><a href="" class="h_links" style="font-size: 14px">Регистрация</a></p>
+                    {% if user.is_authenticated %}
+                        <!-- <p>Welcome, {{ user.username }}!</p> -->
+                        <h2 style="font-size: 25pt;font-weight: 400;line-height: 1.1;">{{ user.username }}, Kazakhstandi birge janadan ashayiq!</h2>
+                    {% else %}
+                        <a href="{% url 'users:login' %}"><button class="btn">Вход</button></a><br>
+                        <p><a href="{% url 'users:register' %}" class="h_links" style="font-size: 14px">Регистрация</a></p>
+                    {% endif %}
                 </div>
             </div>
         </div>
