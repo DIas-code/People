@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="{% static '/vendor/css/css/style.css'%}">
+</head>
+<body>
+    <div class="main">
+        <div class="head pb40px">
+            <header class="flex justify-between">
+                <div class="flex">
+                    <a>
+                        <img src="{% static '/vendor/css/images/h1.png' %}" class="img_h1">
+                    </a>
+                </div>
+                <div class="items-center" style="width: 25%">
+                    <ul>
+                        <li><a href="main.html" class="h_links ml4_percent"><b>Главная</b></a></li>
+                        <li><a href="areas.html" class="h_links ml4_percent">Области</a></li>
+                        <li><a href="guides.html" class="h_links ml4_percent">Гиды</a></li>
+                        <li><a href="main.html" class="h_links ml4_percent">Контакты</a></li>
+                    </ul>
+                </div>
+            </header>
+            <div class="max_width mrl_auto text_center">
+                <div>
+                    <h1 style="font-size: 64pt;margin-bottom: 25px">Sayahat</h1>
+                    <h2 style="font-size: 25pt;font-weight: 400;line-height: 1.1;">Kazakhstandi birge janadan ashayiq!</h2>
+                    <a href="#"><button class="btn">Вход</button></a><br>
+                    <p><a href="" class="h_links" style="font-size: 14px">Регистрация</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="max_width mrl_auto text_center mt50px content_col">
+            <p>О нас</p>
+            <div class="flex justify-between">
+                <div class="con_font_size_part" style="width: 30%">
+                    <div><img src="{% static '/vendor/css/images/main1.jpg' %}" width="100%"></div>
+                    <p>Туры на ваше усмотрение</p>
+                </div>
+                <div class="con_font_size_part" style="width: 30%">
+                    <div><img src="{% static '/vendor/css/images/main2.jpg' %}" width="100%"></div>
+                    <p>Компетентные и весёлые гиды</p>
+                </div>
+                <div class="con_font_size_part" style="width: 30%">
+                    <div><img src="{% static '/vendor/css/images/main3.jpg' %}" width="100%"></div>
+                    <p>Время на природе</p>
+                </div>
+            </div>
+            <div style="font-size: 25pt; text-align: left">
+                <p>Мы в Sayahat хотим, чтобы вы смогли прекрасно провести свой досуг. Для нас очень важно как вы проведете свое время. </p>
+                <p>Тут вы сможете найти не только туры на любой вкус и цвет, но и получить услуги гидов, которые смогут вам помочь в вашей самостоятельной или устроенной вместе с нами поездки. </p>
+            </div>
+        </div>
+        <footer>
+            <div style="margin-top: 30px">
+                <p>По вопросам можете позвонить или написать нам: 8777-777-7777, [sayahat.kz@gmail.com]</p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
