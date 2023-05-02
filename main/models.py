@@ -1,5 +1,6 @@
 from django.db import models
-
+from decimal import Decimal
+from django.core.validators import MinValueValidator
 # Create your models here.
 class Area(models.Model):
     location = models.CharField(max_length=120, unique=True)
@@ -47,6 +48,7 @@ class Excursion(models.Model):
     num_of_people_now = models.PositiveIntegerField(default=0)
     max_num_of_people = models.PositiveIntegerField()
     date = models.DateTimeField()
+    price = models.DecimalField(default=0, decimal_places=2, max_digits=8, validators=[MinValueValidator(Decimal('0.01'))])
     description = models.TextField(null=True)
     Place = models.ForeignKey(to=Place, on_delete=models.CASCADE)
     Category = models.ForeignKey(to=Category, on_delete=models.CASCADE)
@@ -70,7 +72,7 @@ class Guide(models.Model):
 
 class Hotels(models.Model):
     name = models.CharField(max_length=120)
-    price = models.DecimalField(default=0, min=0)
+    price = models.DecimalField(default=0, decimal_places=2, max_digits=8, validators=[MinValueValidator(Decimal('0.01'))])
     phone = models.CharField(max_length=12)
     description = models.TextField(null=True)
     Category = models.ForeignKey(to=Category, on_delete=models.CASCADE)
