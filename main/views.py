@@ -25,21 +25,36 @@ def guides(request):
     return render(request, 'main/guides.html',{})
 
 
-class ProductListView(ListView):
-    model = Products
-    template_name = 'main/area_products.html'
+# class ProductListView(ListView):
+#     model = Products
+#     template_name = 'main/area_products.html'
+#
+#     def get_queryset(self):
+#         queryset = super(ProductListView, self).get_queryset()
+#         category_id = self.kwargs.get('category_id')
+#         return queryset.filter(category_id=category_id) if category_id else queryset
+#
+#     def get_context_data(self, *, object_list=None, **kwargs):
+#         context = super(ProductListView, self).get_context_data()
+#         context['title'] = 'Sayahat'
+#         context['categories'] = Category.objects.all()
+#         return context
 
-    def get_queryset(self):
-        queryset = super(ProductListView, self).get_queryset()
-        category_id = self.kwargs.get('category_id')
-        return queryset.filter(category_id=category_id) if category_id else queryset
+def area_products(request, area_id):
+    products = Products.objects.filter(area_id=area_id)
+    categories = Category.objects.all()
+    context = {'products': products,
+               'categories': categories
+               }
+    return render(request, 'main/area_products.html', context)
 
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super(ProductListView, self).get_context_data()
-        context['title'] = 'Sayahat'
-        context['categories'] = Category.objects.all()
-        return context
-    
+def area_category_products(request, area_id, category_id):
+    products = Products.objects.filter(area_id=area_id, category_id=category_id)
+    categories = Category.objects.all()
+    context = {'products': products,
+               'categories': categories
+               }
+    return render(request, 'main/area_products.html', context)
 
 @login_required
 def basket_add(request, product_id):

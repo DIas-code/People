@@ -98,6 +98,7 @@ class Products(models.Model):
     hotels = models.ForeignKey(to=Hotels, on_delete=models.CASCADE)
     events = models.ForeignKey(to=Events, on_delete=models.CASCADE)
     excursion = models.ForeignKey(to=Excursion, on_delete=models.CASCADE)
+    area = models.ForeignKey(to=Area, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = 'Products'
