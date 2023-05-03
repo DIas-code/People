@@ -82,9 +82,10 @@
                                 <a href="#">{{ product.events.name }}</a>
                             </h4>
                             <h5>от {{ product.events.price }} тенге </h5>
+                            <h3> {{ product.events.description }}</h3>
                         </div>
                         <div class="card-footer text-center">
-                            <a class="btn btn-outline-success" href="#">Смотреть детальнее</a>
+                            <a class="btn btn-outline-success" href="{% url 'main:basket_add' product.id %}">Отправить в корзину</a>
                         </div>
                         {% else %}
                             <a href="#">
@@ -97,6 +98,7 @@
                                 <a href="#">{{ product.excursions.name }}</a>
                             </h4>
                             <h5>от {{ product.excursions.price }} тенге </h5>
+
                         </div>
                         <div class="card-footer text-center">
                             <a class="btn btn-outline-success" href="#">Смотреть детальнее</a>

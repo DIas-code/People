@@ -1,7 +1,8 @@
 from django.shortcuts import render
+from django.shortcuts import render, HttpResponseRedirect
 from django.views.generic.base import TemplateView
 from django.views.generic.list import ListView
-from .models import Area, Category, Products
+from .models import Area, Category, Products, Basket
 # Create your views here.
 from django.contrib.auth.decorators import login_required
 
@@ -38,3 +39,32 @@ class ProductListView(ListView):
         context['title'] = 'Sayahat'
         context['categories'] = Category.objects.all()
         return context
+    
+
+@login_required
+def basket_add(request, product_id):
+    product = Products.objects.get(id=product_id)
+    baskets = Basket.objects.filter(user=request.user, products=product)
+
+    if not baskets.exists():
+        Basket.objects.create(user=request.user, products=product, quantity=1)
+    else:
+        basket = baskets.first()
+        basket.quantity += 1
+        basket.save()
+    print(request)
+
+    return HttpResponseRedirect(request.META['HTTP_REFERER'])
+
+
+def basket_remove(request, product_id):
+    # if self.products.category == "Events":
+    #         return self.products.events.price * self.quantity
+    #     elif self.products.category == "Excursions":
+    #         return self.products.excursion.price * self.quantity
+    #     return self.products.hotels.price * self.quantity
+    product = Products.events.get(id=product_id)
+
+    basket = Basket.objects.filter(user = request.user, products = product)
+    
+    basket.remove(product)

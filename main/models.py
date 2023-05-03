@@ -1,6 +1,7 @@
 from django.db import models
 from decimal import Decimal
 from django.core.validators import MinValueValidator
+from users .models import User
 # Create your models here.
 class Area(models.Model):
     location = models.CharField(max_length=120, unique=True)
@@ -109,3 +110,19 @@ class Products(models.Model):
             return f'{self.category.name}: {self.excursion.name}'
         else:
             return f'{self.category.name}: {self.events.name}'
+
+class Basket(models.Model) :
+    user = models.ForeignKey(to=User, on_delete=models.CASCADE)
+    products = models.ForeignKey(to=Products, on_delete=models.CASCADE)
+    quantity = models.PositiveSmallIntegerField(default=0)
+    created_timestamp = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self) :
+        return f"Корзина товаров для {self.user.username}"
+
+    def sum(self):
+        if self.products.category == "Events":
+            return self.products.events.price * self.quantity
+        elif self.products.category == "Excursions":
+            return self.products.excursion.price * self.quantity
+        return self.products.hotels.price * self.quantity
