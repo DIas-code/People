@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="{% static '/vendor/css/css/style.css'%}">
+    <link rel="stylesheet" href="{% static '/vendor/css/css/style2.css'%}">
 </head>
 <body>
 <div class="main">
@@ -55,14 +55,38 @@
                 <p class="mt0px">Атырау</p>
             </div>
 
-            <div class="flex justify-between">
+            <div class="flex " style="flex-wrap: wrap">
                 {% for area in areas %}
-                <div class="con_font_size_part border_areas prl2px" style="width: 17%">
-                    <div><img src="{{ area.image.url }}" width="100%"></div>
-                    <p>{{ area.location }}</p>
+                <div class="mb15rem" style="flex: 0 0 17%;max-width: 30%;min-width: 200px; margin-left: 35px;">
+                    <div class="card" style="height: 300px">
+                        <img class="card-img-top"
+                             src="{{ area.image.url }}" width="100%"
+                             alt="">
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                <a href="#">{{ area.location }}</a>
+                            </h4>
+                        </div>
+                    </div>
                 </div>
                 {% endfor %}
             </div>
+{#            <div class="flex justify-between">#}
+{#                {% for area in areas %}#}
+{#                <div class="flex justify-between">#}
+{#                    <div class="col-lg-4 mb15rem">#}
+{#                        <div class="card h-100">#}
+{#                            <img src="{{ area.image.url }}" width="100%">#}
+{#                            <div class="card-body">#}
+{#                                <h4>#}
+{#                                    <a href="" style="text-decoration: none; color: seagreen">{{ area.location }}</a>#}
+{#                                </h4>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#                {% endfor %}#}
+{#            </div>#}
             <div style="font-size: 18pt;">
                 <p>Для получения более подробной информации об этой области Вы можете перейти на соответствующую карточку с областью.</p>
             </div>

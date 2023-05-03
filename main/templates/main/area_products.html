@@ -1,10 +1,10 @@
-{% load_static %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="{% static '/vendor/css/css/style.css'%}">
+    <link rel="stylesheet" href="{% static '/vendor/css/css/style2.css'%}">
 </head>
 <body>
 <div class="main">
@@ -26,7 +26,7 @@
         </header>
         <div class="max_width mrl_auto text_center">
             <div>
-                <h1 style="font-size: 64pt;margin-bottom: 25px">{% main: areas area.name%}</h1>
+                <h1 style="font-size: 64pt;margin-bottom: 25px">Products</h1>
             </div>
         </div>
     </div>
@@ -40,38 +40,71 @@
         </div>
         <div class="flex-column items-center">
             <hr size="4" width="100%" color="seagreen" class="mb0px">
-            <div class=""><p style="font-size: 34pt; margin: 0">Выберите категорию</p></div>
+            <div class=""><p style="font-size: 34pt; margin: 0">ВСЕ</p></div>
             <hr size="4" width="100%" color="seagreen" class="mt0px">
         </div>
         <div class="flex justify-between">
             <div class="flex flex-column cat_list">
                 <h3 class="my-4">Sayahat</h3>
                 <div class="flex flex-column">
-                    <a href="#" class="list-group-item">Отели</a>
-                    <a href="#" class="list-group-item">Экскурсии</a>
-                    <a href="#" class="list-group-item">Мероприятия</a>
+                    {% for category in categories %}
+                    <a href="#" class="list-group-item">{{ category.name }}</a>
+                    {% endfor %}
                 </div>
             </div>
             <div class="flex max_width75 justify-between">
+                {% for product in object_list %}
                 <div class="col-lg-4 mb15rem">
                     <div class="card h-100">
+                        {% if product.category.name == 'Hotels' %}
                         <a href="#">
                             <img class="card-img-top"
-                                 src="{{ product.image }}"
+                                 src="{{ product.hotels.image.url }}"
                                  alt="">
                         </a>
                         <div class="card-body">
                             <h4 class="card-title">
-                                <a href="#">{{ product.name }}</a>
+                                <a href="#">{{ product.hotels.name }}</a>
                             </h4>
-                            <h5>{{ product.price }}</h5>
-                            <p class="card-text">{{ product.description }}</p>
+                            <h5>от {{ product.hotels.price }} тенге </h5>
                         </div>
                         <div class="card-footer text-center">
-                            <a class="btn btn-outline-success" href="{% url 'productStore:basket_add' product.id %}">Отправить в корзину</a>
+                            <a class="btn btn-outline-success" href="#">Смотреть детальнее</a>
                         </div>
+                        {% elif product.category.name == 'Events' %}
+                            <a href="#">
+                            <img class="card-img-top"
+                                 src="{{ product.events.image.url }}"
+                                 alt="">
+                        </a>
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                <a href="#">{{ product.events.name }}</a>
+                            </h4>
+                            <h5>от {{ product.events.price }} тенге </h5>
+                        </div>
+                        <div class="card-footer text-center">
+                            <a class="btn btn-outline-success" href="#">Смотреть детальнее</a>
+                        </div>
+                        {% else %}
+                            <a href="#">
+                            <img class="card-img-top"
+                                 src="{{ product.excursions.image.url }}"
+                                 alt="">
+                        </a>
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                <a href="#">{{ product.excursions.name }}</a>
+                            </h4>
+                            <h5>от {{ product.excursions.price }} тенге </h5>
+                        </div>
+                        <div class="card-footer text-center">
+                            <a class="btn btn-outline-success" href="#">Смотреть детальнее</a>
+                        </div>
+                        {% endif %}
                     </div>
                 </div>
+                {% endfor %}
             </div>
         </div>
     </div>

@@ -16,7 +16,7 @@ class Area(models.Model):
 
 class Place(models.Model):
     name = models.CharField(max_length=120, unique=True)
-    Area = models.ForeignKey(to=Area, on_delete=models.CASCADE)
+    area = models.ForeignKey(to=Area, on_delete=models.CASCADE)
     description = models.TextField()
 
     def __str__(self):
@@ -37,15 +37,16 @@ class Events(models.Model):
     image = models.ImageField(upload_to='events_image')
     date = models.DateTimeField()
     description = models.TextField(null=True)
-    Place = models.ForeignKey(to=Place, on_delete=models.CASCADE)
-    Category = models.ForeignKey(to=Category, on_delete=models.CASCADE)
+    price = models.DecimalField(default=0, decimal_places=2, max_digits=8, validators=[MinValueValidator(Decimal('0.01'))])
+    place = models.ForeignKey(to=Place, on_delete=models.CASCADE)
+    category = models.ForeignKey(to=Category, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = 'Event'
         verbose_name_plural = 'Events'
 
     def __str__(self):
-        return f'Event {self.name} in {self.Place.name}'
+        return f'Event {self.name} in {self.place.name}'
 
 class Excursion(models.Model):
     name = models.CharField(max_length=120)
@@ -55,18 +56,18 @@ class Excursion(models.Model):
     date = models.DateTimeField()
     price = models.DecimalField(default=0, decimal_places=2, max_digits=8, validators=[MinValueValidator(Decimal('0.01'))])
     description = models.TextField(null=True)
-    Place = models.ForeignKey(to=Place, on_delete=models.CASCADE)
-    Category = models.ForeignKey(to=Category, on_delete=models.CASCADE)
+    place = models.ForeignKey(to=Place, on_delete=models.CASCADE)
+    category = models.ForeignKey(to=Category, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f'Excursion in {self.Place.name}'
+        return f'Excursion in {self.place.name}'
 
 class Guide(models.Model):
     first_name = models.CharField(max_length=120)
     last_name = models.CharField(max_length=120)
     phone = models.CharField(max_length=12)
     image = models.ImageField(upload_to='guide_images', null=True, blank=True)
-    Excursion = models.ForeignKey(to=Excursion, on_delete=models.CASCADE)
+    excursion = models.ForeignKey(to=Excursion, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = 'Guide'
@@ -81,12 +82,30 @@ class Hotels(models.Model):
     price = models.DecimalField(default=0, decimal_places=2, max_digits=8, validators=[MinValueValidator(Decimal('0.01'))])
     phone = models.CharField(max_length=12)
     description = models.TextField()
-    Category = models.ForeignKey(to=Category, on_delete=models.CASCADE)
-    Place = models.ForeignKey(to=Place, on_delete=models.CASCADE)
+    category = models.ForeignKey(to=Category, on_delete=models.CASCADE)
+    place = models.ForeignKey(to=Place, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = 'Hotels'
         verbose_name_plural = 'Hotels'
 
     def __str__(self):
-        return f'{self.name} in {self.Place.Area.location}'
+        return f'{self.name} in {self.place.Area.location}'
+
+class Products(models.Model):
+    category = models.ForeignKey(to=Category, on_delete=models.CASCADE)
+    hotels = models.ForeignKey(to=Hotels, on_delete=models.CASCADE)
+    events = models.ForeignKey(to=Events, on_delete=models.CASCADE)
+    excursion = models.ForeignKey(to=Excursion, on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name = 'Products'
+        verbose_name_plural = 'Products'
+
+    def __str__(self):
+        if self.hotels.name != 'none':
+            return f'{self.category.name}: {self.hotels.name}'
+        elif self.excursion.name != 'none':
+            return f'{self.category.name}: {self.excursion.name}'
+        else:
+            return f'{self.category.name}: {self.events.name}'
