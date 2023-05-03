@@ -56,7 +56,7 @@ def profile(request):
     for basket in baskets:
         total_sum += basket.sum()
     context = {
-        "title" : "Store - Profile",
+        "title": "Sayahat - Profile",
         "baskets": baskets,
         "total_sum": total_sum,
         "total_quantity": total_quantity
