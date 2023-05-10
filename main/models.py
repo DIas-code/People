@@ -49,6 +49,19 @@ class Events(models.Model):
     def __str__(self):
         return f'Event {self.name} in {self.place.name}'
 
+class Guide(models.Model):
+    first_name = models.CharField(max_length=120)
+    last_name = models.CharField(max_length=120)
+    phone = models.CharField(max_length=12)
+    image = models.ImageField(upload_to='guide_images', null=True, blank=True)
+
+    class Meta:
+        verbose_name = 'Guide'
+        verbose_name_plural = 'Guides'
+
+    def __str__(self):
+        return f'Guide {self.first_name} {self.last_name}'
+
 class Excursion(models.Model):
     name = models.CharField(max_length=120)
     image = models.ImageField(upload_to='excursion_image')
@@ -59,23 +72,10 @@ class Excursion(models.Model):
     description = models.TextField(null=True)
     place = models.ForeignKey(to=Place, on_delete=models.CASCADE)
     category = models.ForeignKey(to=Category, on_delete=models.CASCADE)
+    guide = models.ForeignKey(to=Guide, on_delete=models.CASCADE)
 
     def __str__(self):
         return f'Excursion {self.name} in {self.place.name}'
-
-class Guide(models.Model):
-    first_name = models.CharField(max_length=120)
-    last_name = models.CharField(max_length=120)
-    phone = models.CharField(max_length=12)
-    image = models.ImageField(upload_to='guide_images', null=True, blank=True)
-    excursion = models.ForeignKey(to=Excursion, on_delete=models.CASCADE)
-
-    class Meta:
-        verbose_name = 'Guide'
-        verbose_name_plural = 'Guides'
-
-    def __str__(self):
-        return f'Guide {self.first_name} {self.last_name}'
 
 class Hotels(models.Model):
     name = models.CharField(max_length=120)
