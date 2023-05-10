@@ -80,15 +80,22 @@ def basket_add(request, product_id):
 
     return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
+@login_required
+def basket_remove(request, basket_id):
+    basket = Basket.objects.get(id=basket_id)
+    basket.delete()
+    return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
-def basket_remove(request, product_id):
-    # if self.products.category == "Events":
-    #         return self.products.events.price * self.quantity
-    #     elif self.products.category == "Excursions":
-    #         return self.products.excursion.price * self.quantity
-    #     return self.products.hotels.price * self.quantity
-    product = Products.events.get(id=product_id)
 
-    basket = Basket.objects.filter(user = request.user, products = product)
+# @login_required
+# def basket_remove(request, product_id):
+#     # if self.products.category == "Events":
+#     #         return self.products.events.price * self.quantity
+#     #     elif self.products.category == "Excursions":
+#     #         return self.products.excursion.price * self.quantity
+#     #     return self.products.hotels.price * self.quantity
+#     product = Products.events.get(id=product_id)
+
+#     basket = Basket.objects.filter(user = request.user, products = product)
     
-    basket.remove(product)
+#     basket.remove(product)

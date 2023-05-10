@@ -27,6 +27,13 @@
         <div class="max_width mrl_auto text_center">
             <div>
                 <h1 style="font-size: 64pt;margin-bottom: 25px">Области</h1>
+                {% if user.is_authenticated %}
+                <!-- <p>Welcome, {{ user.username }}!</p> -->
+                <h2 style="font-size: 25pt;font-weight: 400;line-height: 1.1;">{{ user.first_name }}, Kazakhstandi birge janadan ashayiq!</h2>
+                <a href= "{% url 'users:profile' %}">Профиль</a>
+                {% else %}
+        
+                {% endif %}
                 </div>
         </div>
     </div>
