@@ -26,9 +26,9 @@
         </header>
         <div class="max_width mrl_auto text_center">
             <div>
-                {% if product.category.name == "Hotels" %}
+                {% if product.category.name == "Hotels" and product.category.name != 'none' %}
                     <h1 style="font-size: 64pt;margin-bottom: 25px">{{ product.hotels.name }}</h1>
-                {% elif product.category.name == "Excursion" %}
+                {% elif product.category.name == "Excursion" and product.category.name != 'none' %}
                     <h1 style="font-size: 64pt;margin-bottom: 25px">{{ product.excursion.name }}</h1>
                 {% else %}
                     <h1 style="font-size: 64pt;margin-bottom: 25px">{{ product.events.name }}</h1>
@@ -58,7 +58,7 @@
                 <hr size="4" width="100%" color="seagreen">
                 <div>
                     <h5 style="margin:0">Description</h5>
-                    <p>{{ product.hotels.description }}</p>
+                    <p style="font-size: 15px">{{ product.hotels.description }}</p>
                 </div>
             {% elif product.category.name == "Excursion" %}
                 <h1 style="font-size: 64pt;margin-bottom: 25px">{{ product.events.name }}</h1>
@@ -79,12 +79,12 @@
                 <hr size="4" width="100%" color="seagreen">
                 <div>
                     <h5 style="margin:0">Description</h5>
-                    <p>{{ product.events.description }}</p>
+                    <p style="font-size: 15px">{{ product.excursion.description }}</p>
                 </div>
-            {% else %}
-                <h1 style="font-size: 64pt;margin-bottom: 25px">{{ product.excursion.name }}</h1>
+            {% elif product.category.name == "Events" %}
+                <h1 style="font-size: 64pt;margin-bottom: 25px">{{ product.events.name }}</h1>
                 <hr size="4" width="100%" color="seagreen">
-                <div><img src="{{ product.excursion.image.url }}" width=50%></div>
+                <div><img src="{{ product.events.image.url }}" width=50%></div>
                 <hr size="4" width="100%" color="seagreen">
                 <div>
                     <h5 style="margin:0">Details</h5>
@@ -100,7 +100,7 @@
                 <hr size="4" width="100%" color="seagreen">
                 <div>
                     <h5 style="margin:0">Description</h5>
-                    <p>{{ product.excursion.description }}</p>
+                    <p style="font-size: 15px">{{ product.events.description }}</p>
                 </div>
             {% endif %}
         </div>

@@ -97,18 +97,18 @@
                             <a class="btn btn-outline-success" href="{% url 'main:product_detail' product_id=product.id %}">Смотреть детальнее</a>
                         </div>
 
-                        {% elif product.category.name == 'Excursion' %}
+                        {% else %}
             
                             <a href="#">
                             <img class="card-img-top"
-                                 src="{{ product.excursions.image.url }}" width="90%"
+                                 src="{{ product.excursion.image.url }}" width="90%"
                                  alt="">
                         </a>
                         <div class="card-body">
                             <h4 class="card-title">
-                                <a href="#">{{ product.excursions.name }}</a>
+                               {{ product.excursion.name }}
                             </h4>
-                            <h5>от {{ product.excursions.price }} тенге </h5>
+                            <h5>от {{ product.excursion.price }} тенге </h5>
 
                         </div>
                         <div class="card-footer text-center">

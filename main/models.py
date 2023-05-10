@@ -61,7 +61,7 @@ class Excursion(models.Model):
     category = models.ForeignKey(to=Category, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f'Excursion in {self.place.name}'
+        return f'Excursion {self.name} in {self.place.name}'
 
 class Guide(models.Model):
     first_name = models.CharField(max_length=120)
