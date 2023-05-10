@@ -5,6 +5,7 @@ from django.views.generic.list import ListView
 from .models import Area, Category, Products, Basket
 # Create your views here.
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
 
 class IndexView(TemplateView):
     template_name = 'main/main.html'
@@ -44,8 +45,13 @@ def area_products(request):
     # products = Products.objects.filter(area_id=area_id)
     products = Products.objects.all()
     categories = Category.objects.all()
+    p = Paginator(products, 3)
+    page = request.GET.get('page')
+    products = p.get_page(page)
+    num_of_pages = "x" * products.paginator.num_pages
     context = {'products': products,
-               'categories': categories
+               'categories': categories,
+                'num_of_pages': num_of_pages
                }
     return render(request, 'main/area_products.html', context)
 
@@ -53,11 +59,25 @@ def area_category_products(request, category_id):
     products = Products.objects.filter(category_id=category_id)
     categories = Category.objects.all()
     category = Category.objects.get(id=category_id)
-    context = {'products': products,
-               'categories': categories,
-               'category': category,
-               }
+    # context = {'products': products,
+    #            'categories': categories,
+    #            'category': category,
+    #            }
+     
+    p = Paginator(products, 3)
+    page = request.GET.get('page')
+    products = p.get_page(page)
+    num_of_pages = "x" * products.paginator.num_pages
+    
+    context = {
+            'products': products,
+            'categories': categories,
+            'category': category,
+            'num_of_pages': num_of_pages
+    }
+    
     return render(request, 'main/area_products.html', context)
+
 
 def product_detail(request, product_id):
     product = Products.objects.get(id=product_id)
@@ -65,6 +85,7 @@ def product_detail(request, product_id):
         'product': product
     }
     return render(request, 'main/product_detail.html', context)
+
 @login_required
 def basket_add(request, product_id):
     product = Products.objects.get(id=product_id)
