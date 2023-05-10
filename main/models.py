@@ -140,9 +140,10 @@ class Basket(models.Model):
         return f"Корзина товаров для {self.user.username}"
 
     def sum(self):
-        if self.products.category == "Events":
-            return self.products.events.price * self.quantity
-        elif self.products.category == "Excursions":
-            return self.products.excursion.price * self.quantity
-        return self.products.hotels.price * self.quantity
+        total_sum = 0 
+        if self.products.category == "Excursions":
+            total_sum += 0
+        else:
+            total_sum += self.products.hotels.price * self.quantity + self.products.events.price * self.quantity
+        return total_sum
 
