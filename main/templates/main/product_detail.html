@@ -68,9 +68,9 @@
                 <div>
                     <h5 style="margin:0">Details</h5>
                     <ul style="list-style: none; font-size: 25px ; padding: 0">
-                        <li>Location: {{ product.events.place }}</li>
-                        <li>Date: {{ product.events.date }}</li>
-                        <li>Price: {{ product.events.price }} тг.</li>
+                        <li>Location: {{ product.excursion.place }}</li>
+                        <li>Date: {{ product.excursion.date }}</li>
+                        <li>Price: {{ product.excursion.price }} тг.</li>
                     </ul>
                     <div class="card-footer text-center">
                         <a class="btn btn-outline-success" href="{% url 'main:basket_add' product.id %}">Отправить в корзину</a>
@@ -89,9 +89,9 @@
                 <div>
                     <h5 style="margin:0">Details</h5>
                     <ul style="list-style: none; font-size: 25px ; padding: 0">
-                        <li>Location: {{ product.excursion.place }}</li>
-                        <li>Phone: {{ product.excursion.date }}</li>
-                        <li>Price: {{ product.excursion.price }} тг.</li>
+                        <li>Location: {{ product.events.place }}</li>
+                        <li>Phone: {{ product.events.date }}</li>
+                        <li>Price: {{ product.events.price }} тг.</li>
                     </ul>
                     <div class="card-footer text-center">
                         <a class="btn btn-outline-success" href="{% url 'main:basket_add' product.id %}">Отправить в корзину</a>
