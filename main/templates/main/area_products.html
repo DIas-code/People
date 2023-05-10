@@ -63,7 +63,7 @@
                         {% if product.category.name == 'Hotels' %}
                         <a href="">
                             <img class="card-img-top"
-                                 src="{{ product.hotels.image.url }}" width="100%"
+                                 src="{{ product.hotels.image.url }}" width="90%"
                                  alt="">
                         </a>
                         <div class="card-body">
@@ -78,7 +78,7 @@
                         {% elif product.category.name == 'Events' %}
                             <a href="#">
                             <img class="card-img-top"
-                                 src="{{ product.events.image.url }}" width="100%"
+                                 src="{{ product.events.image.url }}" width="90%"
                                  alt="">
                         </a>
                         <div class="card-body">
@@ -96,7 +96,7 @@
                         {% else %}
                             <a href="#">
                             <img class="card-img-top"
-                                 src="{{ product.excursions.image.url }}" width="100%"
+                                 src="{{ product.excursions.image.url }}" width="90%"
                                  alt="">
                         </a>
                         <div class="card-body">
