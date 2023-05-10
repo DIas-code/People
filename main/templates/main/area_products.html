@@ -40,7 +40,11 @@
         </div>
         <div class="flex-column items-center">
             <hr size="4" width="100%" color="seagreen" class="mb0px">
-            <div class=""><p style="font-size: 34pt; margin: 0">ВСЕ</p></div>
+            {% if not category %}
+                <div class=""><p style="font-size: 34pt; margin: 0">ВСЕ</p></div>
+            {% else %}
+                <div class=""><p style="font-size: 34pt; margin: 0">{{ category.name }}</p></div>
+            {% endif %}
             <hr size="4" width="100%" color="seagreen" class="mt0px">
         </div>
         <div class="flex justify-between">
@@ -48,7 +52,7 @@
                 <h3 class="my-4">Sayahat</h3>
                 <div class="flex flex-column">
                     {% for category in categories %}
-                    <a href="{% url 'main:area_category_products' area_id=area.id category_id=products.category.id %}" class="list-group-item">{{ category.name }}</a>
+                    <a href="{% url 'main:area_category_products' category_id=category.id %}" class="list-group-item">{{ category.name }}</a>
                     {% endfor %}
                 </div>
             </div>

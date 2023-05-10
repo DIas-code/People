@@ -91,14 +91,32 @@ class Hotels(models.Model):
         verbose_name_plural = 'Hotels'
 
     def __str__(self):
-        return f'{self.name} in {self.place.Area.location}'
+        return f'{self.name} in {self.place.area.location}'
+
+# class Products(models.Model):
+#     category = models.ForeignKey(to=Category, on_delete=models.CASCADE)
+#     hotels = models.ForeignKey(to=Hotels, on_delete=models.CASCADE)
+#     events = models.ForeignKey(to=Events, on_delete=models.CASCADE)
+#     excursion = models.ForeignKey(to=Excursion, on_delete=models.CASCADE)
+#     area = models.ForeignKey(to=Area, on_delete=models.CASCADE)
+#
+#     class Meta:
+#         verbose_name = 'Products'
+#         verbose_name_plural = 'Products'
+#
+#     def __str__(self):
+#         if self.hotels.name != 'none':
+#             return f'{self.category.name}: {self.hotels.name}'
+#         elif self.excursion.name != 'none':
+#             return f'{self.category.name}: {self.excursion.name}'
+#         else:
+#             return f'{self.category.name}: {self.events.name}'
 
 class Products(models.Model):
     category = models.ForeignKey(to=Category, on_delete=models.CASCADE)
     hotels = models.ForeignKey(to=Hotels, on_delete=models.CASCADE)
     events = models.ForeignKey(to=Events, on_delete=models.CASCADE)
     excursion = models.ForeignKey(to=Excursion, on_delete=models.CASCADE)
-    area = models.ForeignKey(to=Area, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = 'Products'
@@ -112,7 +130,7 @@ class Products(models.Model):
         else:
             return f'{self.category.name}: {self.events.name}'
 
-class Basket(models.Model) :
+class Basket(models.Model):
     user = models.ForeignKey(to=User, on_delete=models.CASCADE)
     products = models.ForeignKey(to=Products, on_delete=models.CASCADE)
     quantity = models.PositiveSmallIntegerField(default=0)
@@ -127,3 +145,4 @@ class Basket(models.Model) :
         elif self.products.category == "Excursions":
             return self.products.excursion.price * self.quantity
         return self.products.hotels.price * self.quantity
+

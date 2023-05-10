@@ -40,19 +40,22 @@ def guides(request):
 #         context['categories'] = Category.objects.all()
 #         return context
 
-def area_products(request, area_id):
-    products = Products.objects.filter(area_id=area_id)
+def area_products(request):
+    # products = Products.objects.filter(area_id=area_id)
+    products = Products.objects.all()
     categories = Category.objects.all()
     context = {'products': products,
                'categories': categories
                }
     return render(request, 'main/area_products.html', context)
 
-def area_category_products(request, area_id, category_id):
-    products = Products.objects.filter(area_id=area_id, category_id=category_id)
+def area_category_products(request, category_id):
+    products = Products.objects.filter(category_id=category_id)
     categories = Category.objects.all()
+    category = Category.objects.get(id=category_id)
     context = {'products': products,
-               'categories': categories
+               'categories': categories,
+               'category': category,
                }
     return render(request, 'main/area_products.html', context)
 
