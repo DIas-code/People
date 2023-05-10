@@ -59,6 +59,12 @@ def area_category_products(request, category_id):
                }
     return render(request, 'main/area_products.html', context)
 
+def product_detail(request, product_id):
+    product = Products.objects.get(id=product_id)
+    context = {
+        'product': product
+    }
+    return render(request, 'main/product_detail.html', context)
 @login_required
 def basket_add(request, product_id):
     product = Products.objects.get(id=product_id)

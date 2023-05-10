@@ -57,13 +57,13 @@
                 </div>
             </div>
             <div class="flex max_width75 justify-between">
-                {% for product in object_list %}
+                {% for product in products %}
                 <div class="col-lg-4 mb15rem">
                     <div class="card h-100">
                         {% if product.category.name == 'Hotels' %}
-                        <a href="#">
+                        <a href="">
                             <img class="card-img-top"
-                                 src="{{ product.hotels.image.url }}"
+                                 src="{{ product.hotels.image.url }}" width="100%"
                                  alt="">
                         </a>
                         <div class="card-body">
@@ -73,20 +73,22 @@
                             <h5>от {{ product.hotels.price }} тенге </h5>
                         </div>
                         <div class="card-footer text-center">
-                            <a class="btn btn-outline-success" href="#">Смотреть детальнее</a>
+                            <a class="btn btn-outline-success" href="{% url 'main:product_detail' product_id=product.id %}">Смотреть детальнее</a>
                         </div>
                         {% elif product.category.name == 'Events' %}
                             <a href="#">
                             <img class="card-img-top"
-                                 src="{{ product.events.image.url }}"
+                                 src="{{ product.events.image.url }}" width="100%"
                                  alt="">
                         </a>
                         <div class="card-body">
                             <h4 class="card-title">
-                                <a href="#">{{ product.events.name }}</a>
+                                {{ product.events.name }}
                             </h4>
                             <h5>от {{ product.events.price }} тенге </h5>
-                            <h3> {{ product.events.description }}</h3>
+                        </div>
+                        <div class="card-footer text-center">
+                            <a class="btn btn-outline-success" href="{% url 'main:product_detail' product_id=product.id %}">Смотреть детальнее</a>
                         </div>
                         <div class="card-footer text-center">
                             <a class="btn btn-outline-success" href="{% url 'main:basket_add' product.id %}">Отправить в корзину</a>
@@ -94,7 +96,7 @@
                         {% else %}
                             <a href="#">
                             <img class="card-img-top"
-                                 src="{{ product.excursions.image.url }}"
+                                 src="{{ product.excursions.image.url }}" width="100%"
                                  alt="">
                         </a>
                         <div class="card-body">
@@ -105,7 +107,7 @@
 
                         </div>
                         <div class="card-footer text-center">
-                            <a class="btn btn-outline-success" href="#">Смотреть детальнее</a>
+                            <a class="btn btn-outline-success" href="{% url 'main:product_detail' product_id=product.id %}">Смотреть детальнее</a>
                         </div>
                         {% endif %}
                     </div>

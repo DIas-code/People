@@ -14,6 +14,7 @@ urlpatterns = [
     # path('areas/area_products', ProductListView.as_view(), name='area_products'),
     path('areas/products/', views.area_products, name='area_products'),
     path('areas/products/category/<int:category_id>/', views.area_category_products, name='area_category_products'),
+    path('area/prduct_detail/<int:product_id>/', views.product_detail, name='product_detail'),
     path('baskets/add/<int:product_id>/', basket_add, name='basket_add'),
     path('baskets/remove/<int:basket_id>/', basket_remove, name='basket_remove'),
 ]

@@ -1,0 +1,109 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static '/vendor/css/css/style2.css'%}">
+</head>
+<body>
+<div class="main">
+    <div class="head2" style="">
+        <header class="flex justify-between">
+            <div class="flex">
+                <a>
+                    <img src="{% static '/vendor/css/images/h1.png' %}" class="img_h1">
+                </a>
+            </div>
+            <div class="items-center" style="width: 30%">
+                <ul>
+                    <li><a href="{% url 'main:index' %}" class="h_links ml4_percent"><b>Главная</b></a></li>
+                    <li><a href="{% url 'main:areas' %}" class="h_links ml4_percent">Области</a></li>
+                    <li><a href="{% url 'main:guides' %}" class="h_links ml4_percent">Гиды</a></li>
+                    <li><a href="{% url 'main:index' %}" class="h_links ml4_percent">Контакты</a></li>
+                </ul>
+            </div>
+        </header>
+        <div class="max_width mrl_auto text_center">
+            <div>
+                {% if product.category.name == "Hotels" %}
+                    <h1 style="font-size: 64pt;margin-bottom: 25px">{{ product.hotels.name }}</h1>
+                {% elif product.category.name == "Excursion" %}
+                    <h1 style="font-size: 64pt;margin-bottom: 25px">{{ product.excursion.name }}</h1>
+                {% else %}
+                    <h1 style="font-size: 64pt;margin-bottom: 25px">{{ product.events.name }}</h1>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+    <div class="max_width mrl_auto text_center mt50px content_col">
+        <div class="flex justify-center flex-column">
+            {% if product.category.name == "Hotels" %}
+                <h1 style="font-size: 64pt;margin-bottom: 25px">{{ product.hotels.name }}</h1>
+                <hr size="4" width="100%" color="seagreen">
+                <div><img src="{{ product.hotels.image.url }}" width=50%></div>
+                <hr size="4" width="100%" color="seagreen">
+                <div>
+                    <h5 style="margin:0">Details</h5>
+                    <ul style="list-style: none; font-size: 25px ; padding: 0">
+                        <li>Location: {{ product.hotels.place }}</li>
+                        <li>Phone: {{ product.hotels.phone }}</li>
+                        <li>Price: {{ product.hotels.price }} тг.</li>
+                    </ul>
+                    сюда купить
+                </div>
+                <hr size="4" width="100%" color="seagreen">
+                <div>
+                    <h5 style="margin:0">Description</h5>
+                    <p>{{ product.hotels.description }}</p>
+                </div>
+            {% elif product.category.name == "Excursion" %}
+                <h1 style="font-size: 64pt;margin-bottom: 25px">{{ product.events.name }}</h1>
+                <hr size="4" width="100%" color="seagreen">
+                <div><img src="{{ product.events.image.url }}" width=50%></div>
+                <hr size="4" width="100%" color="seagreen">
+                <div>
+                    <h5 style="margin:0">Details</h5>
+                    <ul style="list-style: none; font-size: 25px ; padding: 0">
+                        <li>Location: {{ product.events.place }}</li>
+                        <li>Date: {{ product.events.date }}</li>
+                        <li>Price: {{ product.events.price }} тг.</li>
+                    </ul>
+                    сюда купить
+                </div>
+                <hr size="4" width="100%" color="seagreen">
+                <div>
+                    <h5 style="margin:0">Description</h5>
+                    <p>{{ product.events.description }}</p>
+                </div>
+            {% else %}
+                <h1 style="font-size: 64pt;margin-bottom: 25px">{{ product.excursion.name }}</h1>
+                <hr size="4" width="100%" color="seagreen">
+                <div><img src="{{ product.excursion.image.url }}" width=50%></div>
+                <hr size="4" width="100%" color="seagreen">
+                <div>
+                    <h5 style="margin:0">Details</h5>
+                    <ul style="list-style: none; font-size: 25px ; padding: 0">
+                        <li>Location: {{ product.excursion.place }}</li>
+                        <li>Phone: {{ product.excursion.date }}</li>
+                        <li>Price: {{ product.excursion.price }} тг.</li>
+                    </ul>
+                    сюда купить
+                </div>
+                <hr size="4" width="100%" color="seagreen">
+                <div>
+                    <h5 style="margin:0">Description</h5>
+                    <p>{{ product.excursion.description }}</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    <footer>
+        <div style="margin-top: 30px">
+            <p>По вопросам можете позвонить или написать нам: 8777-777-7777, [sayahat.kz@gmail.com]</p>
+        </div>
+    </footer>
+</div>
+</body>
+</html>
