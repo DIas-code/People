@@ -45,13 +45,9 @@ def area_products(request):
     # products = Products.objects.filter(area_id=area_id)
     products = Products.objects.all()
     categories = Category.objects.all()
-    p = Paginator(products, 3)
-    page = request.GET.get('page')
-    products = p.get_page(page)
-    num_of_pages = "x" * products.paginator.num_pages
+    print("products", products)
     context = {'products': products,
-               'categories': categories,
-                'num_of_pages': num_of_pages
+               'categories': categories
                }
     return render(request, 'main/area_products.html', context)
 
@@ -63,17 +59,11 @@ def area_category_products(request, category_id):
     #            'categories': categories,
     #            'category': category,
     #            }
-     
-    p = Paginator(products, 3)
-    page = request.GET.get('page')
-    products = p.get_page(page)
-    num_of_pages = "x" * products.paginator.num_pages
     
     context = {
             'products': products,
             'categories': categories,
-            'category': category,
-            'num_of_pages': num_of_pages
+            'category': category
     }
     
     return render(request, 'main/area_products.html', context)
