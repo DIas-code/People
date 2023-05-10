@@ -115,7 +115,7 @@
                             <a class="btn btn-outline-success" href="{% url 'main:product_detail' product_id=product.id %}">Смотреть детальнее</a>
                         </div>
 
-                        {% elif product.category.name == 'Excursion' and product.excursion.name != 'none' %}
+                        {% elif product.category.name == 'Excursion' and product.excursions.name != 'none' %}
             
                             <a href="#">
                             <img class="card-img-top"
