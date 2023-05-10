@@ -90,9 +90,7 @@
                         <div class="card-footer text-center">
                             <a class="btn btn-outline-success" href="{% url 'main:product_detail' product_id=product.id %}">Смотреть детальнее</a>
                         </div>
-                        <div class="card-footer text-center">
-                            <a class="btn btn-outline-success" href="{% url 'main:basket_add' product.id %}">Отправить в корзину</a>
-                        </div>
+
                         {% else %}
                             <a href="#">
                             <img class="card-img-top"

@@ -51,7 +51,9 @@
                         <li>Phone: {{ product.hotels.phone }}</li>
                         <li>Price: {{ product.hotels.price }} тг.</li>
                     </ul>
-                    сюда купить
+                    <div class="card-footer text-center">
+                        <a class="btn btn-outline-success" href="{% url 'main:basket_add' product.id %}">Отправить в корзину</a>
+                    </div>
                 </div>
                 <hr size="4" width="100%" color="seagreen">
                 <div>
@@ -70,7 +72,9 @@
                         <li>Date: {{ product.events.date }}</li>
                         <li>Price: {{ product.events.price }} тг.</li>
                     </ul>
-                    сюда купить
+                    <div class="card-footer text-center">
+                        <a class="btn btn-outline-success" href="{% url 'main:basket_add' product.id %}">Отправить в корзину</a>
+                    </div>
                 </div>
                 <hr size="4" width="100%" color="seagreen">
                 <div>
@@ -89,7 +93,9 @@
                         <li>Phone: {{ product.excursion.date }}</li>
                         <li>Price: {{ product.excursion.price }} тг.</li>
                     </ul>
-                    сюда купить
+                    <div class="card-footer text-center">
+                        <a class="btn btn-outline-success" href="{% url 'main:basket_add' product.id %}">Отправить в корзину</a>
+                    </div>
                 </div>
                 <hr size="4" width="100%" color="seagreen">
                 <div>
