@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.shortcuts import render, HttpResponseRedirect
 from django.views.generic.base import TemplateView
 from django.views.generic.list import ListView
-from .models import Area, Category, Products, Basket
+from .models import Area, Category, Products, Basket, Guide
 # Create your views here.
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
@@ -23,7 +23,11 @@ def areas(request):
     return render(request, 'main/areas.html', context)
 
 def guides(request):
-    return render(request, 'main/guides.html',{})
+    context = {
+        'title': 'sayahat',
+        'guides': Guide.objects.all(),
+    }
+    return render(request, 'main/guides.html', context)
 
 
 # class ProductListView(ListView):

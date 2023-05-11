@@ -53,6 +53,7 @@
             <div class="flex flex-column cat_list">
                 <h3 class="my-4">Sayahat</h3>
                 <div class="flex flex-column">
+                    <a href="{% url 'main:area_products' %}" class="list-group-item">ВСЕ</a>
                     {% for category in categories %}
                     <a href="{% url 'main:area_category_products' category_id=category.id %}" class="list-group-item">{{ category.name }}</a>
                     {% endfor %}

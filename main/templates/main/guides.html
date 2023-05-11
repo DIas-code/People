@@ -46,66 +46,26 @@
             <hr size="4" width="100%" color="seagreen" class="mb0px">
             <div style="font-size: 80px;">Наши гиды:</div>
             <hr size="4" width="100%" color="seagreen" class="mt0px">
+            {% for guide in guides %}
             <div class="profile">
                 <div style="margin-bottom: 100px;">
                     <div class = "flex">
-                        <div><img src = "{% static '/vendor/css/images/guide.png' %}"></div>
+                        <div><img src = "{{ guide.image.url }}"></div>
                         <div class="image_text">
-                            Общая характеристика, достижения и т.д <br/>
-                            <p class="description">Оценка: 4.7</p>
+                            <p>Full name: {{ guide.first_name }} {{ guide.last_name }}</p>
+                            <br/>
+                            <p>{{ guide.phone }}</p>
+                            <p>{{ guide.charac }}</p>
+                            <div class = "contact">
+                                <button class = "svyaz">Связаться</button>
+                            </div>
                         </div>
                     </div>
-                    <div class = "contact">
-                        <button class = "svyaz">Связаться</button>
-                    </div>
+
                 </div>
                 <hr size="4" width="100%" color="seagreen" class="mt0px">
             </div>
-            <div class="profile">
-                <div style="margin-bottom: 100px;">
-                    <div class = "flex">
-                        <div><img src = "{% static '/vendor/css/images/guide.png' %}"></div>
-                        <div class="image_text">
-                            Общая характеристика, достижения и т.д <br/>
-                            <p class="description">Оценка: 4.7</p>
-                        </div>
-                    </div>
-                    <div class = "contact">
-                        <button class = "svyaz">Связаться</button>
-                    </div>
-                </div>
-                <hr size="4" width="100%" color="seagreen" class="mt0px">
-            </div>
-            <div class="profile">
-                <div style="margin-bottom: 100px;">
-                    <div class = "flex">
-                        <div><img src = "{% static '/vendor/css/images/guide.png' %}"></div>
-                        <div class="image_text">
-                            Общая характеристика, достижения и т.д <br/>
-                            <p class="description">Оценка: 4.7</p>
-                        </div>
-                    </div>
-                    <div class = "contact">
-                        <button class = "svyaz">Связаться</button>
-                    </div>
-                </div>
-                <hr size="4" width="100%" color="seagreen" class="mt0px">
-            </div>
-            <div class="profile">
-                <div style="margin-bottom: 100px;">
-                    <div class = "flex">
-                        <div><img src = "{% static '/vendor/css/images/guide.png' %}"></div>
-                        <div class="image_text">
-                            Общая характеристика, достижения и т.д <br/>
-                            <p class="description">Оценка: 4.7</p>
-                        </div>
-                    </div>
-                    <div class = "contact">
-                        <button class = "svyaz">Связаться</button>
-                    </div>
-                </div>
-                <hr size="4" width="100%" color="seagreen" class="mt0px">
-            </div>
+            {% endfor %}
             <div style="font-size: 18pt;">
                 <p>Для получения более подробной информации об этой области Вы можете перейти на соответствующую карточку с областью.</p>
             </div>

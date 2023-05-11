@@ -38,7 +38,7 @@ class Events(models.Model):
     image = models.ImageField(upload_to='events_image')
     date = models.DateTimeField()
     description = models.TextField(null=True)
-    price = models.DecimalField(default=0, decimal_places=2, max_digits=8, validators=[MinValueValidator(Decimal('0.01'))])
+    price = models.DecimalField(default=0, decimal_places=2, max_digits=8, validators=[MinValueValidator(Decimal('0.00'))])
     place = models.ForeignKey(to=Place, on_delete=models.CASCADE)
     category = models.ForeignKey(to=Category, on_delete=models.CASCADE)
 
@@ -54,6 +54,7 @@ class Guide(models.Model):
     last_name = models.CharField(max_length=120)
     phone = models.CharField(max_length=12)
     image = models.ImageField(upload_to='guide_images', null=True, blank=True)
+    charac = models.TextField(default='')
 
     class Meta:
         verbose_name = 'Guide'
@@ -68,7 +69,7 @@ class Excursion(models.Model):
     num_of_people_now = models.PositiveIntegerField(default=0)
     max_num_of_people = models.PositiveIntegerField()
     date = models.DateTimeField()
-    price = models.DecimalField(default=0, decimal_places=2, max_digits=8, validators=[MinValueValidator(Decimal('0.01'))])
+    price = models.DecimalField(default=0, decimal_places=2, max_digits=8, validators=[MinValueValidator(Decimal('0.00'))])
     description = models.TextField(null=True)
     place = models.ForeignKey(to=Place, on_delete=models.CASCADE)
     category = models.ForeignKey(to=Category, on_delete=models.CASCADE)
@@ -80,7 +81,7 @@ class Excursion(models.Model):
 class Hotels(models.Model):
     name = models.CharField(max_length=120)
     image = models.ImageField(upload_to='hotels_image')
-    price = models.DecimalField(default=0, decimal_places=2, max_digits=8, validators=[MinValueValidator(Decimal('0.01'))])
+    price = models.DecimalField(default=0, decimal_places=2, max_digits=8, validators=[MinValueValidator(Decimal('0.00'))])
     phone = models.CharField(max_length=12)
     description = models.TextField()
     category = models.ForeignKey(to=Category, on_delete=models.CASCADE)

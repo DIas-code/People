@@ -8,13 +8,13 @@
                     <div class="card-body">
                         {% if basket.products.category.name == "Events" %}
                             <h5 class="card-title">{{ basket.products.events.name }}</h5>
-                            <p class="card-text">{{ basket.products.events.description }}</p>
+                            <p class="card-text">{{ basket.products.events.price }} for 1</p>
                         {% elif basket.products.category.name == "Excursions" %}
                             <h5 class="card-title">{{ basket.products.excursions.name }}</h5>
-                            <p class="card-text">{{ basket.products.excursions.description }}</p>
+                            <p class="card-text">{{ basket.products.excursions.price }} for 1</p>
                         {% else %}
                             <h5 class="card-title">{{ basket.products.hotels.name }}</h5>
-                            <p class="card-text">{{ basket.products.hotels.description }}</p>
+                            <p class="card-text">{{ basket.products.hotels.price }} for 1</p>
                         {% endif%}
                     </div>
                     <ul class="list-group list-group-flush">
